@@ -4,7 +4,7 @@ Qwen2.5-Sign is a Text-to-Chinese-Sign model base on Qwen2.5
 
 ## Model Card
 
-- [HuggingFace](https://huggingface.co/thundax/Qwen2.5-1.5B-Sign)
+- [🤗 HuggingFace](https://huggingface.co/thundax/Qwen2.5-1.5B-Sign)
 
 ## Preview
 
@@ -31,6 +31,10 @@ Qwen2.5-Sign is a Text-to-Chinese-Sign model base on Qwen2.5
 | num_epochs                  | 4      |
 
 ## Quickstart
+
+### 🤗 Hugging Face Transformers
+
+The latest version of transformers is recommended (at least 4.37.0). Here we show a code snippet to show you how to use the chat model with transformers:
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -59,15 +63,37 @@ generated_ids = [
 response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 ```
 
+## Deployment
+
+### vLLM
+We advise you to use the latest version of vLLM to build OpenAI-compatible API service, including tool use support. Start the server with a chat model, e.g. Qwen2.5-1.5B-Sign:
+
+```shell
+vllm serve thundax/Qwen2.5-1.5B-Sign
+```
+
+Then use the chat API as demonstrated below:
+
+```shell
+curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+    "model": "thundax/Qwen2.5-1.5B-Sign",
+    "messages": [
+        {"role": "user", "content": "Translate sentence into labels\n站一个制高点看上海，上海的弄堂是壮观的景象。它是这城市背景一样的东西。\n"}
+    ],
+    "temperature": 0.7,
+    "max_tokens": 512
+}'
+```
+
 ## Citation
 
 If you find our work helpful, feel free to give us a cite.
 
 ```
 @software{qwen2-sign,
+  title = {Qwen2-Sign: A Tool for Text to Sign},
   author = {thundax},
-  title = {qwen2-sign: A Tool for Text to Sign},
   year = {2025},
-  url = {https://github.com/thundax-lyp},
+  url = {https://github.com/thundax-lyp}
 }
 ```
