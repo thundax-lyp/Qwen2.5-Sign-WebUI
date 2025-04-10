@@ -4,7 +4,7 @@ import gradio as gr
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "thundax/Qwen2.5-1.5B-Sign"
+model_name = "thundax/Qwen2.5-0.5B-Sign"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)

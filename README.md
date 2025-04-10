@@ -1,5 +1,12 @@
 # Qwen2.5-Sign
 
+<div align="center"> 
+
+[![Preview](https://img.shields.io/badge/Preview-WebUI-red)](https://huggingface.co/spaces/thundax/Qwen2.5-Sign-WebUI)
+[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+</div>
+
 Qwen2.5-Sign is a Text-to-Chinese-Sign model base on Qwen2.5
 
 ## Model Card
@@ -34,7 +41,8 @@ Qwen2.5-Sign is a Text-to-Chinese-Sign model base on Qwen2.5
 
 ### 🤗 Hugging Face Transformers
 
-The latest version of transformers is recommended (at least 4.37.0). Here we show a code snippet to show you how to use the chat model with transformers:
+The latest version of transformers is recommended (at least 4.37.0). Here we show a code snippet to show you how to use
+the chat model with transformers:
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -66,7 +74,9 @@ response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 ## Deployment
 
 ### vLLM
-We advise you to use the latest version of vLLM to build OpenAI-compatible API service, including tool use support. Start the server with a chat model, e.g. Qwen2.5-1.5B-Sign:
+
+We advise you to use the latest version of vLLM to build OpenAI-compatible API service, including tool use support.
+Start the server with a chat model, e.g. Qwen2.5-1.5B-Sign:
 
 ```shell
 vllm serve thundax/Qwen2.5-1.5B-Sign
